@@ -46,25 +46,44 @@ def books_p(request):
         
     except:
         print('something went wrong')
-        school = '1'
+        school = 'all'
    
     
     
+    if school == 'all':
+        if filter_standard == 'all' and filter_pattern != 'all':
+            posts1 = school_book.objects.filter(standard = 'all', pattern =  filter_pattern)
+            print('1')
 
-    if filter_standard == 'all' and filter_pattern != 'all':
-        posts1 = school_book.objects.filter(standard = 'all', pattern =  filter_course, school_name = school)
-        print('1')
+        elif filter_standard != 'all' and filter_pattern == 'all':
+            posts1 = school_book.objects.filter(standard = filter_standard, pattern =  'all')
+            print('2')
 
-    elif filter_standard != 'all' and filter_pattern == 'all':
-        posts1 = school_book.objects.filter(standard = filter_standard, pattern =  'all', school_name = school)
-        print('2')
+        elif filter_standard == 'all' and filter_pattern == 'all':
+            posts1 = school_book.objects.filter(standard = 'all', pattern =  'all')
+            print('3')
 
-    elif filter_standard == 'all' and filter_pattern == 'all':
-        posts1 = school_book.objects.filter(standard = 'all', pattern =  'all', school_name = school)
-        print('3')
+        else:
+            posts1 = school_book.objects.filter(standard = filter_standard, pattern = filter_pattern)
+            print('---------------------------------------------333333333333333333333333333333333333--------')
+            print(posts1)
 
     else:
-        posts1 = school_book.objects.filter(standard = filter_standard, pattern = filter_pattern, school_name = school)
+
+        if filter_standard == 'all' and filter_pattern != 'all':
+            posts1 = school_book.objects.filter(standard = 'all', pattern =  filter_pattern)
+            print('1')
+
+        elif filter_standard != 'all' and filter_pattern == 'all':
+            posts1 = school_book.objects.filter(standard = filter_standard, pattern =  'all', school_name = school)
+            print('2')
+
+        elif filter_standard == 'all' and filter_pattern == 'all':
+            posts1 = school_book.objects.filter(standard = 'all', pattern =  'all', school_name = school)
+            print('3')
+
+        else:
+            posts1 = school_book.objects.filter(standard = filter_standard, pattern = filter_pattern, school_name = school)
 
     
     if sort_by == 'price':

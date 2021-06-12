@@ -59,6 +59,8 @@ def search(request):
         print('here')
         
         print(posts)
+
+        
             
         page = request.GET.get('page',1)
 
@@ -72,6 +74,9 @@ def search(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
 
+        print('sending data')
+        print(posts)
+
         
         context= {
 
@@ -80,7 +85,7 @@ def search(request):
             
         }
 
-        return render(request, 'shop-grid.html', context)
+        return render(request, 'shop-grid_search_result.html', context)
 
         
 
@@ -97,7 +102,7 @@ def search(request):
     }
     
 
-    return render(request, 'shop-grid.html', context)
+    return render(request, 'shop-grid_search_result.html', context)
 
 
 

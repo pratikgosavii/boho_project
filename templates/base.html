@@ -688,7 +688,7 @@
 													<div class="minicart-content-wrapper">
 
 														<div class="mini_action cart">
-															<a class="cart__btn" href="{% url 'login_signup_home' %}">Login to View
+															<a class="cart__btn" href="{% url 'login_home' %}">Login to View
 																your cart</a>
 														</div>
 
@@ -750,9 +750,9 @@
 														{% if user.is_authenticated %}
 														<span><a href="{% url 'logout' %}">Logout</a></span>
 														{% else %}
-														<span><a href="{% url 'login_signup_home' %}">Login In</a></span>
+														<span><a href="{% url 'login_home' %}">Login In</a></span>
 														{% endif %}
-														<span><a href="{% url 'login_signup_home' %}">Create An
+														<span><a href="{% url 'login_home' %}">Create An
 																Account</a></span>
 													</div>
 												</div>
