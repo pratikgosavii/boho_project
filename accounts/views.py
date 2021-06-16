@@ -62,6 +62,9 @@ def login_home(request):
 
     return render(request, 'login_home.html')
 
+def home(request):
+
+    return HttpResponseRedirect(reverse('index'))
 
 
 def loginsignuphome(request):

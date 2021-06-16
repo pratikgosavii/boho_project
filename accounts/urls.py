@@ -33,6 +33,9 @@ urlpatterns = [
     path('xxsdbwerg', views.set_password_html, name='set_password_html'),
     path('cdadhevgetgaeu', views.set_password_view, name='set_password_view'),
 
+    
+    path('home', views.home, name='home'),
+
 
 
     
