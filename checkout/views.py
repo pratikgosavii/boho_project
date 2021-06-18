@@ -176,7 +176,7 @@ def checkout_pagedsd(request):
         else:
 
             messages.warning(request, "please login first!.")
-            return HttpResponseRedirect(reverse('login_signup_home'))
+            return HttpResponseRedirect(reverse('login_home'))
 
 #------------------------------------- here ---------------------------------------------------------------------
 
@@ -674,7 +674,7 @@ def checkout_single_page(request, booki):
     else:
 
         messages.warning(request, "please login first!.")
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -804,7 +804,7 @@ def place_order(request):
 
     else:
         messages.warning(request, "please login first!.")
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
 
 def edit_address(request):
@@ -843,7 +843,7 @@ def edit_address(request):
     else:
         
 
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
         
             
@@ -919,7 +919,7 @@ def mobile_add_address(request):
 
         else:
             messages.warning(request, "please login first!.")
-            return HttpResponseRedirect(reverse('login_signup_home'))
+            return HttpResponseRedirect(reverse('login_home'))
 
     
     else:
@@ -952,7 +952,7 @@ def mobile_address(request):
 
         else:
             messages.warning(request, "please login first!.")
-            return HttpResponseRedirect(reverse('login_signup_home'))
+            return HttpResponseRedirect(reverse('login_home'))
 
     else:
 

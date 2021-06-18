@@ -430,12 +430,12 @@ def change_password(request):
         else:
             
             print('password incorrect')
-            return HttpResponseRedirect(reverse('login_signup_home'))
+            return HttpResponseRedirect(reverse('login_home'))
 
     else:
 
         print('password does not match')
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
         
 
 

@@ -28,7 +28,7 @@ def checkout_page(request):
     else:
 
         messages.warning(request, "please login first!.")
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -158,7 +158,7 @@ def checkout_single_page(request, booki):
     else:
 
         messages.warning(request, "please login first!.")
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -273,7 +273,7 @@ def place_order(request):
 
     else:
         messages.warning(request, "please login first!.")
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
 
 
 def edit_address(request):
@@ -298,7 +298,7 @@ def edit_address(request):
 
         edit_data.save()
 
-        return HttpResponseRedirect(reverse('login_signup_home'))
+        return HttpResponseRedirect(reverse('login_home'))
             
 
             

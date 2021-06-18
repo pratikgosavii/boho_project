@@ -52,7 +52,7 @@ def user_cart_addproduct(request):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 def user_cart_addproduct_byid(request, bookid):
@@ -98,7 +98,7 @@ def user_cart_addproduct_byid(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 def add_Cart_from_wishlist(request, bookid):
@@ -153,7 +153,7 @@ def add_Cart_from_wishlist(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -195,7 +195,7 @@ def user_cart(request):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -249,7 +249,7 @@ def Cart_addproduct_get(request, book_count):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -282,7 +282,7 @@ def user_wishlist_addproduct(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -324,7 +324,7 @@ def add_Wishlist_from_cart(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -343,7 +343,7 @@ def user_wishlist(request):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
     
@@ -365,7 +365,7 @@ def remove_cartbook_byid(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -386,7 +386,7 @@ def remove_cartbook_from_checkout_byid(request, bookid):
 
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
@@ -399,7 +399,7 @@ def remove_wishlistbook_byid(request, bookid):
         
     else:
 
-	    return HttpResponseRedirect(reverse('login_signup_home'))
+	    return HttpResponseRedirect(reverse('login_home'))
 
 
 
