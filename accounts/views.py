@@ -118,7 +118,8 @@ def register(request):
 def logout(request):
     auth.logout(request)
     messages.info(request, 'You are now logout')
-    return redirect('/')
+    return HttpResponseRedirect(reverse('index'))
+
 
 
 
