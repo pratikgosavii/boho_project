@@ -4,91 +4,6 @@
 <style>
 
 
-
-/*  progreess bar css */
-.progressbar-wrapper {
-      background: #fff;
-      width: 100%;
-      padding-top: 10px;
-      padding-bottom: 5px;
-}
-
-.progressbar li {
-      list-style-type: none;
-      width: 20%;
-      float: left;
-      font-size: 12px;
-      position: relative;
-      text-align: center;
-      text-transform: uppercase;
-      color: #7d7d7d;
-}
-
-.progressbar li:before {
-    width: 12px;
-    height: 12px;
-    content: "";
-    line-height: 60px;
-    border: 2px solid #7d7d7d;
-    display: block;
-    text-align: center;
-    margin: 0 auto 3px auto;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    background-color: #fff;
-}
-.progressbar li:after {
-     width: 100%;
-     height: 2px;
-     content: '';
-     position: absolute;
-     background-color: #7d7d7d;
-     top: 30px;
-     left: -50%;
-     z-index: 0;
-}
-.progressbar li:first-child:after {
-     content: none;
-}
-
-.progressbar li.active {
-    color: green;
-    font-weight: bold;  
-}
-.progressbar li.active:before {
-    border-color: #55b776;
-    background: green;
- }
-.progressbar li.active + li:after {
-    background-color: #55b776;
-}
-
-.progressbar li.active:before {
-    background: #55b776  url(user.svg) no-repeat center center;
-    background-size: 60%;
-}
-.progressbar li::before {
-    background: #fff url(user.svg) no-repeat center center;
-    background-size: 60%;
-}
-
-.progressbar {
-    counter-reset: step;
-}
-.progressbar li:before {
-    content: counter(step);
-    counter-increment: step; 
-}
-
-.top_tq{
-    top: 24px;
-}
-
-/*  progreess bar css end */
-
-
-
     .nav-tabs .nav-item.show .nav-link,
     .nav-tabs .nav-link {
         border: none;
@@ -230,31 +145,45 @@
                 <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
-                    <div class="col-12" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;height:300px;">
+                    <div class="col-12" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-bottom:20px;height: auto;">
                        <div style="width: fit-content;display: flex;">
-                            <img src="{{ order_data.placedorder_book.bookfront_cover.url }}" alt="Paris" class="100px" style="margin-top:10PX" height="" width="100px">
+                            <img src="{{ order_data.placedorder_book.bookfront_cover.url }}" alt="Paris" class="100px" style="margin-top:10PX;margin-bottom:10PX" height="" width="100px">
                             <div style="margin-left:51px;margin-top:10px;">
-                                <h4 class=""> {{ order_data.placedorder_book.name }} </h4><br>
+                                <h4 style="font-size: 16px;"> {{ order_data.placedorder_book.name }} </h4><br>
                                 <p class="card-text mb-6"> {{ order_data.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
                                 <p class="card-text mb-6"> {{ order_data.placedorder_book.price }} </p>
                                 <p class="card-text mb-6"> quantity </p>
                             </div>
 
                         </div>
-
-                       <div class="progressbar-wrapper">
-                            <ul class="progressbar">
-                                <li class="active" style="top: 24px;">Step 1</li>
-                                <li >Step 2</li>
-                                <li >Step 3</li>
-                                <li >Step 4</li>
-                            </ul>
                         </div>
 
-                   
+                        <div class="col-6" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-top:20px;height: auto;padding-top: 1px;">
+                    
+                        <h4 style="font-size: 16px;margin-top:20px;"> Delivery Address </h4>
 
+                        
+                            <div style="width: fit-content;display: flex;">
+                                <div style="margin-left:10px;margin-top:10px;">
+                                    <p class="card-text mb-6"> {{ order_data.address.name }} </p>
+                                    <p class="card-text mb-6"> {{ order_data.address.address_full }} </p>
+                                    <p class="card-text mb-6"> {{ order_data.address.pincode }} </p>
+                                    <p class="card-text mb-6"> quantity </p> <br>
+
+                                    <h4 style="font-size: 16px;margin-left:-10px;"> Phone number </h4>
+                                
+                                    <p class="card-text mb-6" style="margin-bottom:10px;"> {{ order_data.address.mobilenumber }} </p>
+                                    
+
+                                </div>
+
+                               
+
+
+                            </div>
+
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>

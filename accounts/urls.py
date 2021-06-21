@@ -43,11 +43,12 @@ urlpatterns = [
 
     path('', views.myaccount, name="my-account"),
     path('myorders', views.myorders, name="my-orders"),
-    path('myaddress', views.myaddress, name="my-orders"),
+    path('myaddress', views.myaddress, name="my-myaddress"),
+    path('address_remove<id>', views.address_remove, name="address_remove"),
     path('subscribe', views.subscibers_view, name='subscibers_view'),
     path('edit_user_info', views.edit_user_info, name='edit_user_info'),
     
-    path('order_detials/<order_id>', views.order_detials, name='order_detials'),
+    path('order_details/<order_id>', views.order_details, name='order_detials'),
    
    
     # path('', include('myorders.urls')),

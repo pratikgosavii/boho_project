@@ -321,6 +321,22 @@ def myaddress(request):
 
 
 
+
+def address_remove(request, id):
+
+    try:
+        address = user_address_detail.objects.get(buyer= request.user, id = id)
+
+    except user_address_detail.DoesNotExist:
+        print('something went wrong')
+        address = None
+        return HttpResponseRedirect(reverse('index'))
+
+    if address:
+        address.delete()
+        return HttpResponseRedirect(reverse('checkout_address'))
+
+
 def subscibers_view(request):
 
     data = request.POST['subscibers_data']
@@ -453,10 +469,14 @@ def check_user_mobile(request):
      
 
 
-def order_detials(request, order_id):
+def order_details(request, order_id):
 
-    order_data = placedorder_book.objects.get(id = order_id)
-
+    try:
+        order_data = placedorder_book.objects.get(id = order_id)
+    except placedorder_book.DoesNotExist:
+        print('something went wrong')
+        return HttpResponseRedirect(reverse('index'))
+    
     
     data = User.objects.filter()
     saved_user_addresses = user_address_detail.objects.filter(buyer= request.user)
@@ -464,10 +484,6 @@ def order_detials(request, order_id):
     user_orders_cancled = placedorder_book.objects.filter(buyer = request.user, order_status = 7).order_by('date_time')
     user_orders_all = placedorder_book.objects.filter(buyer = request.user).order_by('date_time')
     
-    
-
-    
-
     context= {
         
         'saved_user_addresses' : saved_user_addresses,
@@ -479,5 +495,3 @@ def order_detials(request, order_id):
 
 
     return render(request, 'my-account/order_details.html', context)
-    
-

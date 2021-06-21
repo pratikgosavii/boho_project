@@ -784,7 +784,7 @@ input:focus+label {
         <p style="font-weight: 600;text-align: left;padding: 20px;"> Apply Coupon </p>
 
         <hr>
-        <form action="{% url 'checkout' %}" method="post">
+        <form action="{% url 'place_order_laptop' %}" method="post">
             {% csrf_token %}
             <input type="text" name = "couponcheck" style="height:10px;height: 44px;width: 345px;float: left;margin: 20px;padding-left:10px;" placeholder="Enter coupon code">
             <input type="submit" style="margin: 20px;background: none;border: 2px solid #db8173;padding: 11px;" value="Apply">

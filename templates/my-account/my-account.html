@@ -124,7 +124,8 @@
 							
 							<div class="customer_details">
 
-                                <form action="" method="post">
+                                <form action="{% url 'change_password' %}" method="post">
+                                {% csrf_token %}
 								<div class="customar__field">
 									<div class="row">
 										<div class="input_box col-6">
@@ -181,7 +182,6 @@
                                                             <input type="text" style="margin-left:20px;margin-bottom:10px;" name="password1">
                                                             <input type="text" style="margin-left:20px;margin-bottom:10px;" name="password2">
                                                         </div>
-                                                        <a href="{% url 'change_password' %}"> <input type="button" id="Password change" style="background: #e59285 none repeat scroll 0 0;border-radius: 0;color: #fff;margin-left: 6px;display: inline;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;float:right"  value="Change password"></a>
                                                         
 
                                                     </div>

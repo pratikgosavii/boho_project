@@ -357,14 +357,14 @@ xpopup
         </div>
         <div style="display: contents;">
 
-	<div class="apply" style="width:fit-content;flaot:rightfloat: right;right: 23px;border: 1px solid #db8173;color:#db8173;border-radius: 3px;position:absolute;right:12px;padding: 1px 16px;">Add Address</div>        
+	<div style="width:fit-content;flaot:rightfloat: right;right: 23px;border: 1px solid #db8173;cursor: pointer;color:#db8173;border-radius: 3px;position:absolute;right:12px;padding: 1px 16px;" class="apply" >Add Address</div>        
 
 	<br>
 
 </div> 
         </div>
         <!-- Offers  -->
-
+        {% if saved_user_addresses_first %}
         <!-- My shoping bag -->
         <div class="container d-flex justify-content-between align-items-center px-3">
           <h5 style="font-weight:600;">Default Address({{ summary_count }} item)</h5>
@@ -391,12 +391,9 @@ xpopup
                         <p class="card-text mb-6"> Akola - {{ saved_user_addresses_first.pincode }} </p>
                         <p class="card-text mb-6"> {{ saved_user_addresses_first.mobilenumber }} </p>  {% if saved_user_addresses_first.alternate_mobilenumber %} <p class="card-text mb-6"> if alternate mobile number </p> {% endif %}
                     </div> <br>
-                    <form actiion="{% url 'edit_address' %}" method="post">
-                    {% csrf_token %}
-                        <button class="buttoncustom apply" style="margin:5px 5px;">Edit</button>
-                        <button class="buttoncustom apply" style="margin:5px 5px;">Remove</button>
-                    </form>
-                </div>
+                      <button class="buttoncustom" style="margin:5px 5px;">Edit</button>
+                      <a href="{% url 'address_remove' saved_user_addresses_first.id %}"><button class="buttoncustom" style="margin:5px 5px;">Remove</button></a>
+              </div>
             </div>
             
         
@@ -404,17 +401,23 @@ xpopup
          
         </div>
 
+     
+
+     
+        {% if saved_user_addresses|slice:"1:" %}
 
         <div class="container d-flex justify-content-between align-items-center px-3">
           <h5 style="font-weight:600;">Default Address({{ summary_count }} item)</h5>
         </div>
         <!-- My shoping bag -->
 
+          
+
+        {% endif %}
 
         <div class="card m-3 p-2">
+         {% if saved_user_addresses|slice:"1:" %}
         {% for dest in saved_user_addresses|slice:"1:" %}
-         
-                   
             <div class="card-body row">
                 
                 <div class="col-7 offset-right-2" style="margin-left:10px;">
@@ -430,12 +433,10 @@ xpopup
                         <p class="card-text mb-6"> Akola - {{ dest.pincode }} </p>
                         <p class="card-text mb-6"> {{ dest.mobilenumber }} </p>  {% if dest.alternate_mobilenumber %} <p class="card-text mb-6"> if alternate mobile number </p> {% endif %}
                     </div> <br>
-                    <form actiion="{% url 'edit_address' %}" method="post">
-                    {% csrf_token %}
-                        <button class="buttoncustom apply" style="margin:5px 5px;">Edit</button>
-                        <button class="buttoncustom apply" style="margin:5px 5px;">Remove</button>
+                    
+                      <button class="buttoncustom" style="margin:5px 5px;">Edit</button>
+                      <a href="{% url 'address_remove' dest.id %}"><button class="buttoncustom" style="margin:5px 5px;">Remove</button></a>
 
-                    </form>
                 </div>
             </div>
             
@@ -443,11 +444,16 @@ xpopup
             {% endfor %}
                 
             <hr class="my-2" />
+            {% endif %}
+
+     {% endif %}
          
         </div>
-
-
+      
     </div>
+
+    
+    
 
 
       <!-- right colum -->
@@ -507,13 +513,14 @@ xpopup
     </div>
   </div>
 	
+
 <div class="cd-popup" role="alert">
 	<div class="cd-popup-container">
     
-        <p style="font-weight: 600;text-align: left;padding: 20px;"> Add Address </p>
+        <p style="font-weight: 600;text-align: left;padding: 20px;"> Apply Coupon </p>
 
         <hr>
-        <form action="{% url 'checkout_address' %}" method="post">
+        <form action="{% url 'checkout' %}" method="post">
             {% csrf_token %}
             <input type="text" name = "couponcheck" style="height:10px;height: 44px;width: 345px;float: left;margin: 20px;padding-left:10px;" placeholder="Enter coupon code">
             <input type="submit" style="margin: 20px;background: none;border: 2px solid #db8173;padding: 11px;" value="Apply">
@@ -588,6 +595,33 @@ function address(){
         })
 
 }
+
+
+
+  //code for popup
+
+  jQuery(document).ready(function($){
+	//open popup
+	$('.apply').on('click', function(event){
+		event.preventDefault();
+		$('.cd-popup').addClass('is-visible');
+	});
+	
+	//close popup
+	$('.cd-popup').on('click', function(event){
+		if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+	});
+	//close popup when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('.cd-popup').removeClass('is-visible');
+	    }
+    });
+});
+
 
 
 
