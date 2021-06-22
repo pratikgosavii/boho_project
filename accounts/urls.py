@@ -44,6 +44,7 @@ urlpatterns = [
     path('', views.myaccount, name="my-account"),
     path('myorders', views.myorders, name="my-orders"),
     path('myaddress', views.myaddress, name="my-myaddress"),
+    path('add_address', views.add_address, name="add_address"),
     path('address_remove<id>', views.address_remove, name="address_remove"),
     path('subscribe', views.subscibers_view, name='subscibers_view'),
     path('edit_user_info', views.edit_user_info, name='edit_user_info'),

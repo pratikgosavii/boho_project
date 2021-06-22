@@ -321,6 +321,33 @@ def myaddress(request):
 
 
 
+def add_address(request):
+    if request.user.is_authenticated:
+
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            mobilenumber = request.POST.get('mobilenumber')
+            pincode = request.POST.get('pincode')
+            fulladdress = request.POST.get('fulladdress')
+            locality = request.POST.get('locality')
+            district = request.POST.get('district')
+            addresstype = request.POST.get('addresstype')
+
+            user_address_detail.objects.create(buyer = request.user, name= name, mobilenumber = mobilenumber, pincode = pincode, address_full = fulladdress, locality = locality, district = district, addresstype = addresstype)
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        else:
+            print('something wen wrong ')
+            return HttpResponseRedirect(reverse('index'))
+
+            
+    else:
+        print('login first')
+        return HttpResponseRedirect(reverse('login_home'))
+
+
+
+
 
 def address_remove(request, id):
 

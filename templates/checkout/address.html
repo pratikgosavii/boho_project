@@ -327,7 +327,7 @@ xpopup
   <nav class="d-flex justify-content-between align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
       <div class="Logo">
-        <h3>Myntra</h3>
+      <a href="{{request.META.HTTP_REFERER|escape}}">Back</a>
       </div>
 
       <ol class="checkout-steps d-none d-lg-block">
@@ -351,53 +351,122 @@ xpopup
         
 
         <!-- Offers -->
+         {% if saved_user_addresses_first %}
         <div class="card m-3 p-3">
         <div style="display: flex;">
           <h5> Select Deliery Address </h5>
         </div>
         <div style="display: contents;">
 
-	<div style="width:fit-content;flaot:rightfloat: right;right: 23px;border: 1px solid #db8173;cursor: pointer;color:#db8173;border-radius: 3px;position:absolute;right:12px;padding: 1px 16px;" class="apply" >Add Address</div>        
+	        <div style="width:fit-content;flaot:rightfloat: right;right: 23px;border: 1px solid #db8173;cursor: pointer;color:#db8173;border-radius: 3px;position:absolute;right:12px;padding: 1px 16px;" class="apply" >Add Address</div>        
 
-	<br>
+	        <br>
 
-</div> 
+          </div> 
+
+
         </div>
+
+        {% endif %}
         <!-- Offers  -->
-        {% if saved_user_addresses_first %}
-        <!-- My shoping bag -->
-        <div class="container d-flex justify-content-between align-items-center px-3">
-          <h5 style="font-weight:600;">Default Address({{ summary_count }} item)</h5>
-        </div>
+       
         <!-- My shoping bag -->
 
+        {% if saved_user_addresses_first %}
+
+          <div class="container d-flex justify-content-between align-items-center px-3">
+            <h5 style="font-weight:600;">Default Address({{ summary_count }} item)</h5>
+          </div>
+        <!-- My shoping bag -->
+
+        {% endif %}
 
         <div class="card m-3 p-2">
-      
+       {% if saved_user_addresses_first %}
          
-                   
-            <div class="card-body row">
-                <div class="col-7 offset-right-2" style="margin-left:10px;">
                 
-                    <div style="float:left;position: absolute;top: 11px;">
-                        <input type="radio" id="first_address" name="option"  onclick="handleClick(this)" value="{{ saved_user_addresses_first.id }}" checked="checked">
-                    </div>
+          <div class="card-body row">
+            <div class="col-7 offset-right-2" style="margin-left:10px;">
+            
+                <div style="float:left;position: absolute;top: 11px;">
+                    <input type="radio" id="first_address" name="option"  onclick="handleClick(this)" value="{{ saved_user_addresses_first.id }}" checked="checked">
+                </div>
 
-                    <div style="color:#585858;font-weight:400;margin-left: 43px;">
-                        
-                        <h6 style="color:#707070;margin-top:5px;"> {{ saved_user_addresses_first.name }} </h6><br>
-                        <p class="card-text mb-6"> {{  saved_user_addresses_first.address_full }} </p>
-                        <p class="card-text mb-6"> {{ landmaark }} </p>
-                        <p class="card-text mb-6"> Akola - {{ saved_user_addresses_first.pincode }} </p>
-                        <p class="card-text mb-6"> {{ saved_user_addresses_first.mobilenumber }} </p>  {% if saved_user_addresses_first.alternate_mobilenumber %} <p class="card-text mb-6"> if alternate mobile number </p> {% endif %}
-                    </div> <br>
-                      <button class="buttoncustom" style="margin:5px 5px;">Edit</button>
-                      <a href="{% url 'address_remove' saved_user_addresses_first.id %}"><button class="buttoncustom" style="margin:5px 5px;">Remove</button></a>
+                <div style="color:#585858;font-weight:400;margin-left: 43px;">
+                    
+                    <h6 style="color:#707070;margin-top:5px;"> {{ saved_user_addresses_first.name }} </h6><br>
+                    <p class="card-text mb-6"> {{  saved_user_addresses_first.address_full }} </p>
+                    <p class="card-text mb-6"> {{ landmaark }} </p>
+                    <p class="card-text mb-6"> Akola - {{ saved_user_addresses_first.pincode }} </p>
+                    <p class="card-text mb-6"> {{ saved_user_addresses_first.mobilenumber }} </p>  {% if saved_user_addresses_first.alternate_mobilenumber %} <p class="card-text mb-6"> if alternate mobile number </p> {% endif %}
+                </div> <br>
+                  <button class="buttoncustom" style="margin:5px 5px;">Edit</button>
+                  <a href="{% url 'address_remove' saved_user_addresses_first.id %}"><button class="buttoncustom" style="margin:5px 5px;">Remove</button></a>
               </div>
             </div>
             
+
+        {% else %}
+
+                     <form action="{% url 'add_address' %}" method="post">
+
+                     {% csrf_token %}
+
+                            <h5> Add delivery address </h5> <br>
+
+                            <div class="customer_details">
         
-                
+
+                                <div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable> Name </lable>
+											<input type="text" id="1"  name="name" placeholder=""  >
+										</div>
+										<div class="input_box col-6">
+                                            <lable>Mobile number</lable>
+											<input type="text" id="2" name="mobilenumber" >
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Pincode</lable>
+											<input type="text" id="3" name="pincode" >
+										</div>
+										<div class="input_box col-6">
+                                             <lable>Full address</lable>
+											<input type="text" name="fulladdress" >
+										</div>
+									</div>
+
+								
+
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Locality</lable>
+											<input type="text" id="4" name="locality"   >
+										</div>
+										<div class="input_box col-6">
+                                             <lable>District </lable>
+											<input type="text" id="5"  name="district" >
+										</div>
+									</div>
+
+                                    <div class="row">
+										<div class="input_box col-6">
+                                            <lable>Address type</lable>
+											<input type="text" id="4" name="addresstype"   >
+										</div>
+										
+									</div>
+								</div>
+                                <input type="submit" id="submit_btn" value="Submit"  style="background: #2e2e2e none repeat scroll 0 0;margin-top: 10px;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+                                
+							</div>
+
+                        </form>
+
+        {% endif %}
          
         </div>
 
@@ -446,7 +515,6 @@ xpopup
             <hr class="my-2" />
             {% endif %}
 
-     {% endif %}
          
         </div>
       
@@ -520,11 +588,63 @@ xpopup
         <p style="font-weight: 600;text-align: left;padding: 20px;"> Apply Coupon </p>
 
         <hr>
-        <form action="{% url 'checkout' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name = "couponcheck" style="height:10px;height: 44px;width: 345px;float: left;margin: 20px;padding-left:10px;" placeholder="Enter coupon code">
-            <input type="submit" style="margin: 20px;background: none;border: 2px solid #db8173;padding: 11px;" value="Apply">
-		</form>
+         <form action="{% url 'add_address' %}" method="post">
+
+                     {% csrf_token %}
+
+                            <h5> Add delivery address </h5> <br>
+
+                            <div class="customer_details">
+        
+
+                                <div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable > Name </lable>
+											<input type="text" style="position: inherit;left: 10px;" id="1"  name="name" placeholder=""  >
+										</div>
+										<div class="input_box col-6">
+                                            <lable>Mobile number</lable>
+											<input type="text" style="position: inherit;right: 10px;" id="2" name="mobilenumber" >
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Pincode</lable>
+											<input type="text" style="position: inherit;left: 10px;" id="3" name="pincode" >
+										</div>
+										<div class="input_box col-6">
+                                             <lable>Full address</lable>
+											<input type="text" style="position: inherit;right: 10px;" name="fulladdress" >
+										</div>
+									</div>
+
+								
+
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Locality</lable>
+											<input type="text" style="position: inherit;left: 10px;" id="4" name="locality"   >
+										</div>
+										<div class="input_box col-6">
+                                             <lable>District </lable>
+											<input type="text" style="position: inherit;right: 10px;" id="5"  name="district" >
+										</div>
+									</div>
+
+                                    <div class="row">
+										<div class="input_box col-6">
+                                            <lable>Address type</lable>
+											<input type="text" style="position: inherit;left: 10px;" id="4" name="addresstype"   >
+										</div>
+										
+									</div>
+								</div>
+                                <input type="submit" id="submit_btn" value="Submit"  style="background: #2e2e2e none repeat scroll 0 0;margin-top: 10px;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+                                
+							</div>
+
+                        </form>
 		<a href="#0" class="cd-popup-close img-replace">Close</a>
 	</div> 
 </div> 

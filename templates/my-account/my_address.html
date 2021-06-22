@@ -119,6 +119,7 @@
             
             <div class="tab-pane active" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 
+                {% if saved_user_addresses %}
                {% for dest in saved_user_addresses  %}
 
                 <div class="card my-3">
@@ -143,6 +144,69 @@
                 </div>
 
                 {% endfor %}
+
+                {% else %}
+
+
+                        <form action="{% url 'add_address' %}" method="post">
+
+                            {% csrf_token %}
+                            
+
+                            <h5> Add Address </h5>
+
+                            <div class="customer_details">
+        
+
+                                <div class="customar__field">
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable> Name </lable>
+											<input type="text" id="1"  name="name" readonly>
+										</div>
+										<div class="input_box col-6">
+                                            <lable>Mobile number</lable>
+											<input type="text" id="2" name="mobilenumber" readonly>
+										</div>
+									</div>
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Pincode</lable>
+											<input type="text" id="3" name="pincode"  readonly>
+										</div>
+										<div class="input_box col-6">
+                                             <lable>Full address</lable>
+											<input type="text" name="fulladdress"  readonly>
+										</div>
+									</div>
+
+								
+
+									<div class="row">
+										<div class="input_box col-6">
+                                            <lable>Locality</lable>
+											<input type="text" id="4" name="locality"   readonly>
+										</div>
+										<div class="input_box col-6">
+                                             <lable>District </lable>
+											<input type="text" id="5"  name="district" readonly>
+										</div>
+									</div>
+
+                                    <div class="row">
+										<div class="input_box col-6">
+                                            <lable>Address type</lable>
+											<input type="text" id="4" name="addresstype"   readonly>
+                                        </div>
+										
+									</div>
+								</div>
+                                <input type="button" id="submit_btn" value="Submit" onclick="address()" style="background: #2e2e2e none repeat scroll 0 0;margin-top: 10px;border-radius: 0;color: #fff;margin-left: 6px;display: inline-block;font-size: 12px;font-weight: 700;line-height: 34px;padding: 2px 20px 0;text-transform: uppercase;transition: all 0.4s ease 0s;border: 0 none;">
+                                
+							</div>
+
+                        </form>
+                {% endif %}
             </div>
             
 
