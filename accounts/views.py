@@ -9,6 +9,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from requests import request
+import datetime
 from home.models import books
 from myorders.models import user_address_detail, placedorder_book
 from .models import subscibers
@@ -507,17 +508,14 @@ def order_details(request, order_id):
     
     data = User.objects.filter()
     saved_user_addresses = user_address_detail.objects.filter(buyer= request.user)
-    user_orders_open = placedorder_book.objects.filter(buyer = request.user, order_status = 2)
-    user_orders_cancled = placedorder_book.objects.filter(buyer = request.user, order_status = 7).order_by('date_time')
-    user_orders_all = placedorder_book.objects.filter(buyer = request.user).order_by('date_time')
+    
+    expected_delivery_date = order_data.date_time + datetime.timedelta(days=1)
     
     context= {
         
         'saved_user_addresses' : saved_user_addresses,
-        'user_orders_open': user_orders_open,
-        'user_orders_cancled': user_orders_cancled,
-        'user_orders_all': user_orders_all,
         'order_data' : order_data,
+        'expected_delivery_date' : expected_delivery_date
     }
 
 

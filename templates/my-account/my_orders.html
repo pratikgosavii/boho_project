@@ -182,7 +182,7 @@
                                     <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
-                                    <p class="card-text mb-6"> quantity </p>
+                                    <p class="card-text mb-6"> quantity : {{ dest.quantity }} </p>
                                 </div>
                             
                                 <div style="float:right;">
@@ -247,7 +247,7 @@
                                     <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
-                                    <p class="card-text mb-6"> quantity </p>
+                                    <p class="card-text mb-6"> quantity : {{ dest.quantity }} </p>
                                 </div>
                             
                                 <div style="float:right;">
@@ -279,7 +279,7 @@
                                    <bold> <small>
                                         ORDER PLACED
                                     </small> </bold> </div>
-                                    {{ dest.date_time|date:'Y-m-d' }}
+                                    {{ dest.date_time|date:'d-m-Y' }}
                                
 
                                
@@ -304,7 +304,7 @@
                                     <h4 class=""> {{ dest.placedorder_book.name }} </h4><br>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.standard }} {{ dest.placedorder_book.pattern }} </p>
                                     <p class="card-text mb-6"> {{ dest.placedorder_book.price }} </p>
-                                    <p class="card-text mb-6"> quantity </p>
+                                    <p class="card-text mb-6"> quantity : {{ dest.quantity }} </p>
                                 </div>
                             
                                 <div style="float:right;">
@@ -335,4 +335,5 @@
     </div>
 </div>
 
+ 
 {% endblock %}

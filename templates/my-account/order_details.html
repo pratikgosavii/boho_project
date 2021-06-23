@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}MANAGE YOUR ACCOUNT{% endblock %}
 {% block styles %}
+
 <style>
 
 
@@ -114,8 +115,14 @@
   width: 50%;
 }
 
+h3, .h3, h4, .h4 {
+    font-weight: 500;
+}
+
 
 </style>
+
+
 {% endblock %}
 {% block content %}<br><br><br><br><br>
 <div class="container">
@@ -145,7 +152,7 @@
                 <div class="tab-pane fade show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
 
-                    <div class="col-12" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-bottom:20px;height: auto;">
+                    <div class="col-12" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-bottom:1px;height: auto;">
                        <div style="width: fit-content;display: flex;">
                             <img src="{{ order_data.placedorder_book.bookfront_cover.url }}" alt="Paris" class="100px" style="margin-top:10PX;margin-bottom:10PX" height="" width="100px">
                             <div style="margin-left:51px;margin-top:10px;">
@@ -156,13 +163,12 @@
                             </div>
 
                         </div>
-                        </div>
+                    </div>
 
-                        <div class="col-6" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-top:20px;height: auto;padding-top: 1px;">
+                    <div class="col-12" style="display: flex;padding: 0px;">
                     
-                        <h4 style="font-size: 16px;margin-top:20px;"> Delivery Address </h4>
-
-                        
+                        <div class="col-6" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-top:10px;margin-right:10px;height: auto;padding-top: 1px;">
+                            <h4 style="font-size: 16px;margin-top:20px;"> Delivery Address </h4>
                             <div style="width: fit-content;display: flex;">
                                 <div style="margin-left:10px;margin-top:10px;">
                                     <p class="card-text mb-6"> {{ order_data.address.name }} </p>
@@ -172,21 +178,37 @@
 
                                     <h4 style="font-size: 16px;margin-left:-10px;"> Phone number </h4>
                                 
-                                    <p class="card-text mb-6" style="margin-bottom:10px;"> {{ order_data.address.mobilenumber }} </p>
-                                    
+                                    <p class="card-text mb-6" style="margin-bottom:10px;float:left;"> {{ order_data.address.mobilenumber }} </p> 
+
+									<input type="submit" style="margin-left: 47px;padding: 0px 7px;font-size: 13px;font-weight: bold;" class="apply btn btn-outline-dark dro-but"  value="Change" />
 
                                 </div>
-
-                               
-
-
                             </div>
+                        </div>
 
+                        <div class="col-6" style="box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;margin-top:10px;margin-right:10px;height: auto;padding-top: 1px;">
+                            <h4 style="font-size: 16px;margin-top:20px;"> Details </h4>
+                            <div style="width: fit-content;display: flex;">
+                                <div style="margin-left:10px;margin-top:10px;">
+                                    <p class="card-text mb-6"><spam style="font-weight: 500;"> Placed at :</spam> {{ order_data.date_time }} </p>
+                                    <p class="card-text mb-6"><spam style="font-weight: 500;"> Payment mode :</spam> cash on delivery </p>
+                                    <p class="card-text mb-6"> <spam style="font-weight: 500;">Expected delivey : </spam> {{ expected_delivery_date|date:'d-m-Y' }} </p> <br>
+        
+                                    <h4 style="font-size: 16px;margin-left:-10px;"> Delivery Agent details </h4> 
+                                    <p class="card-text mb-6"> <spam style="font-weight: 500;">Name : </spam>Pratik Gosavi </p>
+                                    <p class="card-text mb-6"><spam style="font-weight: 500;"> Mobile :</spam> +91 8830265487 | +91 8237377298 </p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}

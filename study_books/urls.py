@@ -17,6 +17,6 @@ path('books_medical', views.books_medical_filter, name='books_medical'),
 
 
 
-path('single-product<b>', views.single_product, name='single-product'),
+path('singleproduct<b>', views.single_product, name='single-product'),
 path('search', views.search, name='search'),
 ]

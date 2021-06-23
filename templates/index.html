@@ -54,6 +54,12 @@
 }
 
 
+.dro-but{
+
+	margin-left: 10px;
+    position: absolute;
+}
+
 
 
 </style>
@@ -205,7 +211,7 @@
     {% endif %}
 	
 <br><br>
-	<p style="text-align: center;"> select school books-->standard = 10th pattern = MSBt for demo </p>
+	<p style="text-align: center;"> select school books button-->standard = 10th pattern = MSBT for demo </p>
 
 <div class="container">
     <div class="d-flex justify-content-center col-lg-12 col-lg-4 text-center">
@@ -223,9 +229,12 @@
 
 				  		<!-- Modal content-->
 							<div class="modal-content">
+							
 								<div class="modal-header">
 					
 									<h4 class="modal-title">select category</h4>
+								<p style="text-align: center;margin-right:20px;"> select standard = 10th pattern = MSBT for demo </p>
+
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 								</div>
 								<div class="modal-body">
@@ -261,7 +270,7 @@
                                    
 										<input type="hidden" id="field"  value="books_school" />
 										<input type="hidden" id="school"  value="all" />
-										<input type="submit"  class="btn btn-outline-dark"  value="submit" />
+										<input type="submit"  class="btn btn-outline-dark dro-but"  value="submit" />
 
 
 									</div>
