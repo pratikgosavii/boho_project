@@ -12,7 +12,7 @@ You're receiving this email because you requested a password reset for your user
 
 Please go to the following page and choose a new password:
 
-http://127.0.0.1:8000/reset/MTE/5n9-bed3c80be33183ad8b5b/
+https://boho.pythonanywhere.com/reset/MTE/5n9-bed3c80be33183ad8b5b/
 
 Your username, in case you’ve forgotten: p
 

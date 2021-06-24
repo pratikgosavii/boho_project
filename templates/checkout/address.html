@@ -691,7 +691,7 @@ function address(){
     }
 
                 
-    xhr.open("POST", "http://127.0.0.1:8000/checkout/address_session",true);
+    xhr.open("POST", "https://boho.pythonanywhere.com/checkout/address_session",true);
 
     xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     xhr.send("address="+address_number);

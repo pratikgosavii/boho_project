@@ -417,7 +417,7 @@ $(()=>{
         alert("email="+email);
 
 
-        xhr.open("POST", "http://127.0.0.1:8000/accounts/firebase_login_save",true);
+        xhr.open("POST", "https://boho.pythonanywhere.com/accounts/firebase_login_save",true);
         xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         xhr.send("email="+email+"&provider="+provider+"&username="+username+"&token="+token);
 

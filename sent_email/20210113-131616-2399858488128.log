@@ -12,7 +12,7 @@ You're receiving this email because you requested a password reset for your user
 
 Please go to the following page and choose a new password:
 
-http://127.0.0.1:8000/reset/MTA/5n9-f0162be93eade209c0fc/
+https://boho.pythonanywhere.com/reset/MTA/5n9-f0162be93eade209c0fc/
 
 Your username, in case you’ve forgotten: Pratik Gosavi
 

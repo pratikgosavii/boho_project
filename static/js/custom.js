@@ -318,7 +318,7 @@ function validateCaptcha() {
     debugger
     if (document.getElementById("cpatchaTextBox").value == code) {
 
-        window.location.replace("http://127.0.0.1:8000/checkout/mobile_placeorder");
+        window.location.replace("https://boho.pythonanywhere.com/checkout/mobile_placeorder");
 
 
     } else {
@@ -333,7 +333,7 @@ function validateCaptcha_payment() {
     debugger
     if (document.getElementById("cpatchaTextBox").value == code) {
 
-        window.location.replace("http://127.0.0.1:8000/checkout/place_order");
+        window.location.replace("https://boho.pythonanywhere.com/checkout/place_order");
 
 
     } else {
